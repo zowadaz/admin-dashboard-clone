@@ -1,3 +1,4 @@
+import UserMenu from "./components/user-menu";
 import {
     Settings,
     Home,
@@ -5,7 +6,6 @@ import {
     Package,
     Users,
     BarChart3,
-    User,
     Search,
     File,
     CirclePlus,
@@ -60,9 +60,7 @@ export default function AdminLayout({children} :
                                 </span>
                             </div>
                             {/* user */}
-                            <button className="rounded-full border p-2 text-slate-500">
-                                <User className="h-4 w-4"/>
-                            </button>
+                            <UserMenu />
                         </div>
                     </div>
                     {/* tab export addProducts */}
