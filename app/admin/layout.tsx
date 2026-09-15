@@ -1,53 +1,67 @@
+import {
+    Settings,
+    Home,
+    ShoppingCart,
+    Package,
+    Users,
+    BarChart3,
+    User,
+    Search,
+    File,
+    CirclePlus,
+} from "lucide-react";
+
 export default function AdminLayout({children} : 
     {children: React.ReactNode}) {
     return (
         <div className="flex min-h-screen bg-background">
             {/* sidebar */}
-            <aside className="w-64 border-r bg-card">
-                <div className="flex h-24 items-center border-b px-6">
-                    <h1 className="text-lg font-bold">
-                        Admin Dashboard
-                    </h1>
+            <aside className="w-20 bg-card">
+                <div className="flex h-24 items-center px-6">
+                    <Settings />
                 </div>
                 {/* navigation */}
                 <nav className="p-4">
                     <div className="space-y-2">
                         <a href="admin" className="block rounded-md p-4 text-sm font-medium hover:bg-muted">
-                            Dashboard
+                            <Home className="h-5 w-5" />
                         </a>
                         <a href="admin/orders" className="block rouded-md p-4 text-sm font-medium hover:bg-muted">
-                            orders
+                            <ShoppingCart className="h-5 w-5" />
                         </a>
                         <a href="admin/products" className="block rouded-md p-4 text-sm font-medium hover:bg-muted">
-                            products
+                            <Package className="h-5 w-5" />
                         </a>
                         <a href="admin/customers" className="block rouded-md p-4 text-sm font-medium hover:bg-muted">
-                            customers
+                            <Users className="h-5 w-5" />
                         </a>
                         <a href="admin/analytics" className="block rouded-md p-4 text-sm font-medium hover:bg-muted">
-                            analytics
+                            <BarChart3 className="h-5 w-5" />
                         </a>
                     </div>
                 </nav>
             </aside>
             {/*main*/}
-            <main className="flex-1 bg-stone-50">
-                <header className="flex flex-col h-24 border-b text-sm">
-                    {/* route search logout */}
+            <main className="flex-1 bg-stone-100">
+                <header className="flex flex-col h-24 text-sm p-4">
+                    {/* route search user */}
                     <div className="flex w-full items-center">
                         {/* route */}
                         <p className="px-4">
                             Dashboard  ＞  Products  ＞  All Products 
                         </p>
-                        {/* search logout */}
+                        {/* search user */}
                         <div className="flex flex-1 items-center justify-end gap-4">
                             {/* search */}
-                            <span className="text-md">
-                                Search...
-                            </span>
-                            {/* logout */}
-                            <button className="rounded-md border p-2">
-                                logout
+                            <div className="flex w-80 h-8 p-2 items-center border rounded-sm bg-white text-slate-500">
+                               <Search className="h-4 w-4"/> 
+                                <span className="ml-2">
+                                    Search...
+                                </span>
+                            </div>
+                            {/* user */}
+                            <button className="rounded-full border p-2 text-slate-500">
+                                <User className="h-4 w-4"/>
                             </button>
                         </div>
                     </div>
@@ -63,19 +77,19 @@ export default function AdminLayout({children} :
                         {/* export addProducts */}
                         <div className="flex flex-1 items-center justify-end gap-4">
                             {/* export */}
-                            <button className="rounded-sm border p-2 bg-gray-100">
-                                Export
-                            </button>
+                            <div className="flex rounded-md border items-center p-2 bg-white">
+                                <File className="w-4 h-4"/>
+                                <p className="pl-2 text-sm font-semibold">Export</p>
+                            </div>
                             {/* add products */}
-                            <button className="rounded-md border p-2 bg-black text-white">
-                                add products
-                            </button>
+                            <div className="flex rounded-md border p-2 bg-black text-white">
+                                <CirclePlus className="w-4 h-4"/>
+                                <p className="pl-2 text-sm">Add products</p>
+                            </div>
                         </div>
                     </div>
                 </header>
-                <div className="p-6">
-                    {children}
-                </div>
+                {children}
             </main>
         </div>
     )

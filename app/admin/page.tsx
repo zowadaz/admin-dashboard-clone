@@ -1,6 +1,6 @@
 export default function AdminPage() {
     return (
-        <div>
+        <div className="m-4 h-full bg-white rounded-lg">
             <h1 className="text-2xl font-semibolt">
                 Products
             </h1>
