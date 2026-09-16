@@ -1,3 +1,4 @@
+import ProductFilter from "./components/product-filter";
 import UserMenu from "./components/user-menu";
 import {
     Settings,
@@ -63,15 +64,10 @@ export default function AdminLayout({children} :
                             <UserMenu />
                         </div>
                     </div>
-                    {/* tab export addProducts */}
+                    {/* filter export addProducts */}
                     <div className="flex items-center py-2">
-                        {/* tab */}
-                        <div className="flex bg-stone-200 ml-4">
-                            <button className="p-2">All</button>
-                            <button className="p-2">Active</button>
-                            <button className="p-2">Draft</button>
-                            <button className="p-2">Archive</button>   
-                        </div>
+                        {/* filter */}
+                        <ProductFilter />
                         {/* export addProducts */}
                         <div className="flex flex-1 items-center justify-end gap-4">
                             {/* export */}
