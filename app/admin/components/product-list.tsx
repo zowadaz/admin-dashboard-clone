@@ -1,6 +1,6 @@
 "use client";
 import  { type ProductInfo, useProductPagination } from "./product";
-import image from "next/image";
+import Image from "next/image";
 
 const PRODUCT_PER_PAGE = 5;
 
@@ -39,7 +39,7 @@ export default function ProductList({ products } : {products: ProductInfo[]}) {
             {currentProducts.map(product => (
                 <div key={product.name} className="grid grid-cols-[1.5fr_2fr_2fr_2fr_2fr_2fr_1.5fr] items-center border-b px-5 py-5 text-left text-sm gap-4">
                     <div>
-                        <img src={product.img}/>
+                        <Image src={product.img} alt={product.description} width={120} height={40}/>
                     </div>
                     <div>{product.name}</div>
                     <div className="border rounded-sm text-center w-fit justify-self-center">{product.status}</div>
