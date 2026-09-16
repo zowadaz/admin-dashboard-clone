@@ -1,4 +1,5 @@
 "use client";
+import { ChartNoAxesGanttIcon } from "lucide-react";
 import  { type ProductInfo, useProductPagination } from "./product";
 import Image from "next/image";
 
@@ -6,6 +7,7 @@ const PRODUCT_PER_PAGE = 5;
 
 export default function ProductList({ products } : {products: ProductInfo[]}) {
     const {filter, currentPage, setCurrentPage} = useProductPagination();
+    console.log(filter);
     const filteredProducts = filter === "all" ? products : products.filter(
         (product) => product.status === filter
     );
@@ -19,9 +21,10 @@ export default function ProductList({ products } : {products: ProductInfo[]}) {
 
     const productLength = filteredProducts.length;
     const maxPage = Math.ceil(productLength / PRODUCT_PER_PAGE);
-    const startIndex = currentPage * PRODUCT_PER_PAGE;
+    const changingPage = Math.min(maxPage - 1, currentPage);
+    const startIndex = changingPage * PRODUCT_PER_PAGE;
     const endIndex = Math.min(productLength, (currentPage + 1) * PRODUCT_PER_PAGE) - 1;
-    const currentProducts = products.slice(startIndex, endIndex + 1);
+    const currentProducts = filteredProducts.slice(startIndex, endIndex + 1);
 
     // list
     return (
@@ -59,14 +62,14 @@ export default function ProductList({ products } : {products: ProductInfo[]}) {
                 </div>
                 <div className="flex flex-1 justify-end gap-5">
                     {/* prev */}
-                    <button disabled={currentPage <= 0}  className={`pr-2 ${currentPage <= 0 ? "text-slate-500" : "text-black"}`}
-                    onClick={() => setCurrentPage(currentPage - 1)}
+                    <button disabled={changingPage <= 0}  className={`pr-2 ${changingPage <= 0 ? "text-slate-500" : "text-black"}`}
+                    onClick={() => setCurrentPage(changingPage - 1)}
                     >
                         {"< prev"}
                     </button>
                     {/* next */}
-                    <button disabled={currentPage >= maxPage - 1} className={`pl-2 ${currentPage >= maxPage - 1 ? "text-slate-500" : "text-black"}`}
-                    onClick={() => setCurrentPage(currentPage + 1)}
+                    <button disabled={changingPage >= maxPage - 1} className={`pl-2 ${changingPage >= maxPage - 1 ? "text-slate-500" : "text-black"}`}
+                    onClick={() => setCurrentPage(changingPage + 1)}
                     >
                         {"next >"}
                     </button>
